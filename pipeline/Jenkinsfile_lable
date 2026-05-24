@@ -1,6 +1,12 @@
 pipeline {
     agent {label 'Sleave1'}
 
+    parameters {
+        choice choices: ['prod', 'dev', 'stagging'], name: 'select'
+    }
+
+    git branch: 'main', credentialsId: 'aws_pem', url: 'https://github.com/Kiran-krt/dec_jenkins_pipeline_repo.git'
+
     stages {
 
         stage('STAGE 1') {
